@@ -3,49 +3,27 @@ if arg[2] == "debug" then
 end
 
 
+
 function love.load()
-    -- Remember: camelCasing!
-    listOfRectangles = {}
-end
+    Object = require "classic"
+    
+    local Rectangle = require "rectangle"
+    local Circle = require "circle"
+    -- Create a new Rectangle object.
+    r1 = Rectangle(100, 100, 200, 50)
 
-function createRect()
-    rect = {}
-    rect.x = 100
-    rect.y = 100
-    rect.width = 70
-    rect.height = 90
-    rect.speed = 100
-
-    -- Put the new rectangle in the list
-    table.insert(listOfRectangles, rect)
-end
-
-function love.keypressed(key)
-    -- Remember, 2 equal signs (==) for comparing!
-    if key == "space" then
-        createRect()
-    end
+    r2 = Circle(350, 80, 40)
 end
 
 function love.update(dt)
-    for i,v in ipairs(listOfRectangles) do
-        v.x = v.x + v.speed * dt
-    end
+    r1:update(dt)
+    r2:update(dt)
 end
 
 function love.draw(dt)
-    for i,v in ipairs(listOfRectangles) do
-        love.graphics.rectangle("line", v.x, v.y, v.width, v.height)
-    end
+    r1:draw(r1)
+    r2:draw(r2)
 end
-
-
-
-
-
-
-
-
 
 local love_errorhandler = love.errorhandler
 
