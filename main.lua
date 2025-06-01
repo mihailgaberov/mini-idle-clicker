@@ -1,29 +1,52 @@
 if arg[2] == "debug" then
     require("lldebugger").start()
 end
-
-
+--==================================================
 
 function love.load()
     Object = require "classic"
-    
-    local Rectangle = require "rectangle"
-    local Circle = require "circle"
-    -- Create a new Rectangle object.
-    r1 = Rectangle(100, 100, 200, 50)
+    require "player"
 
-    r2 = Circle(350, 80, 40)
+    player = Player()
 end
 
 function love.update(dt)
-    r1:update(dt)
-    r2:update(dt)
+    player:update(dt)
 end
 
-function love.draw(dt)
-    r1:draw(r1)
-    r2:draw(r2)
+function love.draw()
+    player:draw()
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--==================================================
 
 local love_errorhandler = love.errorhandler
 
