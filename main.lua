@@ -3,44 +3,22 @@ if arg[2] == "debug" then
 end
 --==================================================
 
-function love.load()
-    Object = require "classic"
-    require "player"
-    require "enemy"
-    require "bullet"
+local game = require("game")
 
-    player = Player()
-    enemy = Enemy()
-    listOfBullets = {}
+function love.load()
+    game.load()
 end
 
 function love.update(dt)
-    player:update(dt)
-    enemy:update(dt)
-
-    for i, v in ipairs(listOfBullets) do
-        v:update(dt)
-
-        v:checkCollision(enemy)
-         --If the bullet has the property dead and it's true then..
-        if v.dead then
-            --Remove it from the list
-            table.remove(listOfBullets, i)
-        end
-    end
+    game.update(dt)
 end
 
 function love.draw()
-    player:draw()
-    enemy:draw()
-
-    for i, v in ipairs(listOfBullets) do
-        v:draw()
-    end
+    game.draw()
 end
 
-function love.keypressed(key)
-    player:keyPressed(key)
+function love.mousepressed(x, y, button)
+    game.mousepressed(x, y, button)
 end
 
 --==================================================
