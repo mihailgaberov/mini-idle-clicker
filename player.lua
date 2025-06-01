@@ -34,3 +34,11 @@ end
 function Player:draw()
     love.graphics.draw(self.image, self.x, self.y)
 end
+
+function Player:keyPressed(key)
+    --If the spacebar is pressed
+    if key == "space" then
+        --Put a new instance of Bullet inside listOfBullets.
+        table.insert(listOfBullets, Bullet(self.x, self.y))
+    end
+end
